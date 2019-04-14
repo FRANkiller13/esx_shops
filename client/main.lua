@@ -42,8 +42,8 @@ function OpenShopMenu(zone)
 		end
 
 		table.insert(elements, {
-			label      = ('%s - <span style="color:green;">%s</span>'):format(item.label, _U('shop_item', ESX.Math.GroupDigits(item.price))),
-			label_real = item.label,
+			label      = item.label .. ' - <span style="color: green;">$' .. item.price .. '</span>',
+    		label_real = item.label,
 			item       = item.item,
 			price      = item.price,
 
@@ -62,7 +62,7 @@ function OpenShopMenu(zone)
 		elements = elements
 	}, function(data, menu)
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop_confirm', {
-			title    = _U('shop_confirm', data.current.value, data.current.label_real, ESX.Math.GroupDigits(data.current.price * data.current.value)),
+			title    = _U('shop_confirm', data.current.value, data.current.label_real, data.current.price * data.current.value),
 			align    = 'bottom-right',
 			elements = {
 				{label = _U('no'),  value = 'no'},
